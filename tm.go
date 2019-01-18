@@ -68,7 +68,6 @@ func (tm *Tm) Register(w WorkerIteraface) {
 
 				case <-time.After(time.Duration(tm.Defer) * time.Millisecond):
 					if r > 0 {
-						//fmt.Printf("timer %s\n", w.GetType())
 						break loop
 					}
 
@@ -96,7 +95,8 @@ func (tm *Tm) Dispatch() {
 		defer tm.Done()
 		for job := range tm.JobQueue {
 			if _, ok := tm.Workers[job.Type]; !ok {
-				log.Fatal(fmt.Sprintf("Invalid job type %s", job.Type))
+				log.Println(fmt.Sprintf("Invalid job type %s", job.Type))
+				continue
 			}
 			tm.Workers[job.Type].GetJobs() <- job
 		}
