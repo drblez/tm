@@ -1,4 +1,4 @@
-<h1>Task manager with mickobatching</h1>
+<h1>Task manager with microbatching</h1>
 
 Inspired by https://github.com/kimiby/gotm
 
