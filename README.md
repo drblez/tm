@@ -19,8 +19,8 @@ type CustomWorker struct {
 func (w CustomWorker) Do(job *tm.Job) {
 
 	for _, a := range job.Args {
-		if job, ok := a.(string); ok {
-			fmt.Println(job)
+		if task, ok := a.(string); ok {
+			fmt.Println(task)
 		}
 	}
 
