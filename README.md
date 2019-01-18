@@ -33,6 +33,13 @@ func main() {
 	custom := CustomWorker{tm.Worker{Type: "custom"}}
 
 	task_manager := tm.Create(10)
+	
+	// Assemble tasks into a Batch of 50 components before starting execution
+	task_manager.Batch = 50
+
+	// After 500 ms start the execution even if the number of tasks did not reach 50
+	task_manager.Defer = 500
+	
 	task_manager.Register(&custom)
 	task_manager.Dispatch()
 
